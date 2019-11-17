@@ -7,6 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sunnycommon" />
+        <module name="user-service" />
         <module name="auth-service" />
       </profile>
     </annotationProcessing>
@@ -18,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="" />
       <module name="discovery-service" options="" />
+      <module name="user-service" options="" />
     </option>
   </component>
 </project>

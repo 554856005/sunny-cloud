@@ -31,6 +31,8 @@
     <!--  子项目 -->
     <modules>
         <module>auth-service</module>
+        <module>sunny-common</module>
+        <module>user-service</module>
     </modules>
 
     <dependencies>
