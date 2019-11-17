@@ -15,32 +15,32 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organizationentityService;
 
-    @PostMapping("/organizationentity")
+    @PostMapping("/organization")
     public OrganizationEntity save(@RequestBody OrganizationEntity organizationentity){
         return organizationentityService.save(organizationentity);
     }
 
-    @GetMapping("/organizationentity/{id}")
+    @GetMapping("/organization/{id}")
     public OrganizationEntity getById(@PathVariable(value = "id") String id){
         return organizationentityService.find(id);
     }
 
-    @GetMapping("/organizationentity")
+    @GetMapping("/organization")
     public List<OrganizationEntity> getAll(){
         return organizationentityService.findAll();
     }
 
-    @DeleteMapping("/organizationentity/{id}")
+    @DeleteMapping("/organization/{id}")
     public void deleteById(@PathVariable(value = "id") String id){
         organizationentityService.delete(id);
     }
 
-    @DeleteMapping("/organizationentity")
+    @DeleteMapping("/organization")
     public void deleteAll(){
         organizationentityService.deleteAll();
     }
 
-    @GetMapping("/organizationentity/count")
+    @GetMapping("/organization/count")
     public long count(){
         return organizationentityService.count();
     }

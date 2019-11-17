@@ -15,32 +15,32 @@ public class UserController {
     @Autowired
     private UserService userentityService;
 
-    @PostMapping("/userentity")
+    @PostMapping("/user")
     public UserEntity save(@RequestBody UserEntity userentity){
         return userentityService.save(userentity);
     }
 
-    @GetMapping("/userentity/{id}")
+    @GetMapping("/user/{id}")
     public UserEntity getById(@PathVariable(value = "id") String id){
         return userentityService.find(id);
     }
 
-    @GetMapping("/userentity")
+    @GetMapping("/user")
     public List<UserEntity> getAll(){
         return userentityService.findAll();
     }
 
-    @DeleteMapping("/userentity/{id}")
+    @DeleteMapping("/user/{id}")
     public void deleteById(@PathVariable(value = "id") String id){
         userentityService.delete(id);
     }
 
-    @DeleteMapping("/userentity")
+    @DeleteMapping("/user")
     public void deleteAll(){
         userentityService.deleteAll();
     }
 
-    @GetMapping("/userentity/count")
+    @GetMapping("/user/count")
     public long count(){
         return userentityService.count();
     }

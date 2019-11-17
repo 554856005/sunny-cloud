@@ -15,32 +15,32 @@ public class RoleController {
     @Autowired
     private RoleService roleentityService;
 
-    @PostMapping("/roleentity")
+    @PostMapping("/role")
     public RoleEntity save(@RequestBody RoleEntity roleentity){
         return roleentityService.save(roleentity);
     }
 
-    @GetMapping("/roleentity/{id}")
+    @GetMapping("/role/{id}")
     public RoleEntity getById(@PathVariable(value = "id") String id){
         return roleentityService.find(id);
     }
 
-    @GetMapping("/roleentity")
+    @GetMapping("/role")
     public List<RoleEntity> getAll(){
         return roleentityService.findAll();
     }
 
-    @DeleteMapping("/roleentity/{id}")
+    @DeleteMapping("/role/{id}")
     public void deleteById(@PathVariable(value = "id") String id){
         roleentityService.delete(id);
     }
 
-    @DeleteMapping("/roleentity")
+    @DeleteMapping("/role")
     public void deleteAll(){
         roleentityService.deleteAll();
     }
 
-    @GetMapping("/roleentity/count")
+    @GetMapping("/role/count")
     public long count(){
         return roleentityService.count();
     }

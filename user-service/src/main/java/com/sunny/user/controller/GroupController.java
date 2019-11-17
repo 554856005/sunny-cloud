@@ -14,32 +14,32 @@ public class GroupController {
     @Autowired
     private GroupService groupentityService;
 
-    @PostMapping("/groupentity")
+    @PostMapping("/group")
     public GroupEntity save(@RequestBody GroupEntity groupentity){
         return groupentityService.save(groupentity);
     }
 
-    @GetMapping("/groupentity/{id}")
+    @GetMapping("/group/{id}")
     public GroupEntity getById(@PathVariable(value = "id") String id){
         return groupentityService.find(id);
     }
 
-    @GetMapping("/groupentity")
+    @GetMapping("/group")
     public List<GroupEntity> getAll(){
         return groupentityService.findAll();
     }
 
-    @DeleteMapping("/groupentity/{id}")
+    @DeleteMapping("/group/{id}")
     public void deleteById(@PathVariable(value = "id") String id){
         groupentityService.delete(id);
     }
 
-    @DeleteMapping("/groupentity")
+    @DeleteMapping("/group")
     public void deleteAll(){
         groupentityService.deleteAll();
     }
 
-    @GetMapping("/groupentity/count")
+    @GetMapping("/group/count")
     public long count(){
         return groupentityService.count();
     }

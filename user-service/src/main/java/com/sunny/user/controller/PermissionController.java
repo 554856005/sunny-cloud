@@ -15,32 +15,32 @@ public class PermissionController {
     @Autowired
     private PermissionService permissionentityService;
 
-    @PostMapping("/permissionentity")
+    @PostMapping("/permission")
     public PermissionEntity save(@RequestBody PermissionEntity permissionentity){
         return permissionentityService.save(permissionentity);
     }
 
-    @GetMapping("/permissionentity/{id}")
+    @GetMapping("/permission/{id}")
     public PermissionEntity getById(@PathVariable(value = "id") String id){
         return permissionentityService.find(id);
     }
 
-    @GetMapping("/permissionentity")
+    @GetMapping("/permission")
     public List<PermissionEntity> getAll(){
         return permissionentityService.findAll();
     }
 
-    @DeleteMapping("/permissionentity/{id}")
+    @DeleteMapping("/permission/{id}")
     public void deleteById(@PathVariable(value = "id") String id){
         permissionentityService.delete(id);
     }
 
-    @DeleteMapping("/permissionentity")
+    @DeleteMapping("/permission")
     public void deleteAll(){
         permissionentityService.deleteAll();
     }
 
-    @GetMapping("/permissionentity/count")
+    @GetMapping("/permission/count")
     public long count(){
         return permissionentityService.count();
     }

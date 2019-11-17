@@ -15,32 +15,32 @@ public class MenuController {
     @Autowired
     private MenuService menuentityService;
 
-    @PostMapping("/menuentity")
+    @PostMapping("/menu")
     public MenuEntity save(@RequestBody MenuEntity menuentity){
         return menuentityService.save(menuentity);
     }
 
-    @GetMapping("/menuentity/{id}")
+    @GetMapping("/menu/{id}")
     public MenuEntity getById(@PathVariable(value = "id") String id){
         return menuentityService.find(id);
     }
 
-    @GetMapping("/menuentity")
+    @GetMapping("/menu")
     public List<MenuEntity> getAll(){
         return menuentityService.findAll();
     }
 
-    @DeleteMapping("/menuentity/{id}")
+    @DeleteMapping("/menu/{id}")
     public void deleteById(@PathVariable(value = "id") String id){
         menuentityService.delete(id);
     }
 
-    @DeleteMapping("/menuentity")
+    @DeleteMapping("/menu")
     public void deleteAll(){
         menuentityService.deleteAll();
     }
 
-    @GetMapping("/menuentity/count")
+    @GetMapping("/menu/count")
     public long count(){
         return menuentityService.count();
     }
