@@ -18,7 +18,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = false)
 public class RootEntity {
     @Id
-    @Column
+    @Column(length = 32)
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     private String id;
