@@ -1,6 +1,7 @@
 package com.sunny.user.entity;
 
 import com.sunny.common.entity.BaseEntity;
+import com.sunny.user.enums.ActiveEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -59,6 +60,12 @@ public class UserEntity extends BaseEntity {
      */
     @Column(columnDefinition = "varchar(255) comment '加密盐'")
     private String salt;
+
+    /**
+     * 状态
+     */
+    @Column(columnDefinition = "varchar(10) comment '状态'")
+    private ActiveEnum status;
 
     /**
      * 组织id

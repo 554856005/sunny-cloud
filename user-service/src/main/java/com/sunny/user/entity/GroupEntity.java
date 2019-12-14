@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 组
+ * 用户组
  *
  * @author JasonLi
  * @date 2019/3/1 20:10

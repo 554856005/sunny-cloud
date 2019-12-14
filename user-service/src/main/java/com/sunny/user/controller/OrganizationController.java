@@ -1,9 +1,9 @@
 package com.sunny.user.controller;
 
+import com.sunny.common.utils.Result;
 import com.sunny.user.entity.OrganizationEntity;
 import com.sunny.user.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,35 +13,37 @@ import java.util.List;
 public class OrganizationController {
 
     @Autowired
-    private OrganizationService organizationentityService;
+    private OrganizationService organizationService;
 
     @PostMapping("/organization")
-    public OrganizationEntity save(@RequestBody OrganizationEntity organizationentity){
-        return organizationentityService.save(organizationentity);
+    public Result<OrganizationEntity> save(@RequestBody OrganizationEntity entity) {
+        return Result.ofSuccess(organizationService.save(entity));
     }
 
     @GetMapping("/organization/{id}")
-    public OrganizationEntity getById(@PathVariable(value = "id") String id){
-        return organizationentityService.find(id);
+    public Result<OrganizationEntity> getById(@PathVariable(value = "id") String id) {
+        return Result.ofSuccess(organizationService.find(id));
     }
 
     @GetMapping("/organization")
-    public List<OrganizationEntity> getAll(){
-        return organizationentityService.findAll();
+    public Result<List<OrganizationEntity>> getAll() {
+        return Result.ofSuccess(organizationService.findAll());
     }
 
     @DeleteMapping("/organization/{id}")
-    public void deleteById(@PathVariable(value = "id") String id){
-        organizationentityService.delete(id);
+    public Result deleteById(@PathVariable(value = "id") String id) {
+        organizationService.delete(id);
+        return Result.ofSuccess();
     }
 
     @DeleteMapping("/organization")
-    public void deleteAll(){
-        organizationentityService.deleteAll();
+    public Result deleteAll() {
+        organizationService.deleteAll();
+        return Result.ofSuccess();
     }
 
     @GetMapping("/organization/count")
-    public long count(){
-        return organizationentityService.count();
+    public Result<Long> count() {
+        return Result.ofSuccess(organizationService.count());
     }
 }

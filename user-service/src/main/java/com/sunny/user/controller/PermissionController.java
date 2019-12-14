@@ -1,9 +1,9 @@
 package com.sunny.user.controller;
 
+import com.sunny.common.utils.Result;
 import com.sunny.user.entity.PermissionEntity;
 import com.sunny.user.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,35 +13,37 @@ import java.util.List;
 public class PermissionController {
 
     @Autowired
-    private PermissionService permissionentityService;
+    private PermissionService permissionService;
 
     @PostMapping("/permission")
-    public PermissionEntity save(@RequestBody PermissionEntity permissionentity){
-        return permissionentityService.save(permissionentity);
+    public Result<PermissionEntity> save(@RequestBody PermissionEntity permissionentity) {
+        return Result.ofSuccess(permissionService.save(permissionentity));
     }
 
     @GetMapping("/permission/{id}")
-    public PermissionEntity getById(@PathVariable(value = "id") String id){
-        return permissionentityService.find(id);
+    public Result<PermissionEntity> getById(@PathVariable(value = "id") String id) {
+        return Result.ofSuccess(permissionService.find(id));
     }
 
     @GetMapping("/permission")
-    public List<PermissionEntity> getAll(){
-        return permissionentityService.findAll();
+    public Result<List<PermissionEntity>> getAll() {
+        return Result.ofSuccess(permissionService.findAll());
     }
 
     @DeleteMapping("/permission/{id}")
-    public void deleteById(@PathVariable(value = "id") String id){
-        permissionentityService.delete(id);
+    public Result deleteById(@PathVariable(value = "id") String id) {
+        permissionService.delete(id);
+        return Result.ofSuccess();
     }
 
     @DeleteMapping("/permission")
-    public void deleteAll(){
-        permissionentityService.deleteAll();
+    public Result deleteAll() {
+        permissionService.deleteAll();
+        return Result.ofSuccess();
     }
 
     @GetMapping("/permission/count")
-    public long count(){
-        return permissionentityService.count();
+    public Result<Long> count() {
+        return Result.ofSuccess(permissionService.count());
     }
 }

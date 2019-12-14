@@ -20,6 +20,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
+    /**
+     * 必须配置，不然SpringBoot会自动配置一个AuthenticationManager，覆盖掉内存中的用户
+     * @return
+     * @throws Exception
+     */
     @Bean
     @Override
     public AuthenticationManager authenticationManager() throws Exception {

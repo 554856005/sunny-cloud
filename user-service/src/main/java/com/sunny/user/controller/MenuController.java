@@ -1,9 +1,9 @@
 package com.sunny.user.controller;
 
+import com.sunny.common.utils.Result;
 import com.sunny.user.entity.MenuEntity;
 import com.sunny.user.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,35 +13,37 @@ import java.util.List;
 public class MenuController {
 
     @Autowired
-    private MenuService menuentityService;
+    private MenuService menuService;
 
     @PostMapping("/menu")
-    public MenuEntity save(@RequestBody MenuEntity menuentity){
-        return menuentityService.save(menuentity);
+    public Result<MenuEntity> save(@RequestBody MenuEntity menuentity) {
+        return Result.ofSuccess(menuService.save(menuentity));
     }
 
     @GetMapping("/menu/{id}")
-    public MenuEntity getById(@PathVariable(value = "id") String id){
-        return menuentityService.find(id);
+    public Result<MenuEntity> getById(@PathVariable(value = "id") String id) {
+        return Result.ofSuccess(menuService.find(id));
     }
 
     @GetMapping("/menu")
-    public List<MenuEntity> getAll(){
-        return menuentityService.findAll();
+    public Result<List<MenuEntity>> getAll() {
+        return Result.ofSuccess(menuService.findAll());
     }
 
     @DeleteMapping("/menu/{id}")
-    public void deleteById(@PathVariable(value = "id") String id){
-        menuentityService.delete(id);
+    public Result deleteById(@PathVariable(value = "id") String id) {
+        menuService.delete(id);
+        return Result.ofSuccess();
     }
 
     @DeleteMapping("/menu")
-    public void deleteAll(){
-        menuentityService.deleteAll();
+    public Result deleteAll() {
+        menuService.deleteAll();
+        return Result.ofSuccess();
     }
 
     @GetMapping("/menu/count")
-    public long count(){
-        return menuentityService.count();
+    public Result<Long> count() {
+        return Result.ofSuccess(menuService.count());
     }
 }
