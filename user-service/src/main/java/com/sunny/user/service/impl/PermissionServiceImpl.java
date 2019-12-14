@@ -1,15 +1,18 @@
 package com.sunny.user.service.impl;
 
+import com.sunny.common.dto.user.PermissionDTO;
 import com.sunny.user.entity.PermissionEntity;
 import com.sunny.user.repository.PermissionRepo;
 import com.sunny.user.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.sunny.user.mapper.PermissionMapper.PERMISSION_MAPPER;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -38,18 +41,18 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public List<PermissionEntity> findAll(Sort sort){
+    public List<PermissionEntity> findAll(Sort sort) {
         return permissionRepo.findAll(sort);
     }
 
     @Override
-    public Page<PermissionEntity> findAll(Pageable pageable){
+    public Page<PermissionEntity> findAll(Pageable pageable) {
         return permissionRepo.findAll(pageable);
     }
 
     @Override
     public void delete(String id) {
-    permissionRepo.deleteById(id);
+        permissionRepo.deleteById(id);
     }
 
     @Override
@@ -70,6 +73,11 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public long count() {
         return permissionRepo.count();
+    }
+
+    @Override
+    public List<PermissionDTO> findPermissions(String userId) {
+        return PERMISSION_MAPPER.toPermissionDTOs(permissionRepo.findByUserId(userId));
     }
 
 }

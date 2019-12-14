@@ -1,4 +1,4 @@
-package com.sunny.user.enums;
+package com.sunny.common.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;

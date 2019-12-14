@@ -1,7 +1,7 @@
 package com.sunny.user.entity;
 
 import com.sunny.common.entity.RootEntity;
-import com.sunny.user.enums.ActiveEnum;
+import com.sunny.common.enums.ActiveEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -28,7 +28,10 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class PermissionEntity extends RootEntity {
     @Column(columnDefinition = "varchar(120) comment '权限'")
-    private String permission;
+    private String name;
+
+    @Column(columnDefinition = "varchar(120) comment '请求路径'")
+    private String url;
 
     @Column(columnDefinition = "varchar(1000) comment '描述'")
     private String description;

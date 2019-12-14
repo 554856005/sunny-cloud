@@ -1,7 +1,7 @@
 package com.sunny.user.entity;
 
 import com.sunny.common.entity.BaseEntity;
-import com.sunny.user.enums.ActiveEnum;
+import com.sunny.common.enums.ActiveEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,18 +32,6 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class UserEntity extends BaseEntity {
     /**
-     * 姓名
-     */
-    @Column(columnDefinition = "varchar(20) comment '姓名'")
-    private String userName;
-
-    /**
-     * 工号
-     */
-    @Column(columnDefinition = "varchar(20) comment '工号'")
-    private String userCode;
-
-    /**
      * 登录名
      */
     @Column(columnDefinition = "varchar(30) comment '登录名'", unique = true, nullable = false)
@@ -66,6 +54,24 @@ public class UserEntity extends BaseEntity {
      */
     @Column(columnDefinition = "varchar(10) comment '状态'")
     private ActiveEnum status;
+
+    /**
+     * 姓名
+     */
+    @Column(columnDefinition = "varchar(20) comment '姓名'")
+    private String userName;
+
+    @Column(columnDefinition = "tinyint(1) comment '性别，1男、2女'")
+    private Integer gender;
+
+    @Column(columnDefinition = "varchar(20) comment '邮箱'")
+    private String email;
+
+    /**
+     * 工号
+     */
+    @Column(columnDefinition = "varchar(20) comment '工号'")
+    private String userCode;
 
     /**
      * 组织id

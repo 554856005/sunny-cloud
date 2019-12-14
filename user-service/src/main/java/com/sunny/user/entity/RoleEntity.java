@@ -1,7 +1,7 @@
 package com.sunny.user.entity;
 
 import com.sunny.common.entity.BaseEntity;
-import com.sunny.user.enums.ActiveEnum;
+import com.sunny.common.enums.ActiveEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -34,7 +34,7 @@ public class RoleEntity extends BaseEntity {
      * 角色名称
      */
     @Column(columnDefinition = "varchar(20) comment '角色名称'", nullable = false)
-    private String roleName;
+    private String name;
 
     /**
      * 角色代码
@@ -46,7 +46,7 @@ public class RoleEntity extends BaseEntity {
      * 角色目录
      */
     @Column(columnDefinition = "varchar(36) comment '角色目录'")
-    private String roleCatalog;
+    private String catalog;
 
     /**
      * 所在组织Id

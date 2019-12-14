@@ -1,15 +1,18 @@
 package com.sunny.user.service.impl;
 
+import com.sunny.common.dto.user.UserDTO;
 import com.sunny.user.entity.UserEntity;
 import com.sunny.user.repository.UserRepo;
 import com.sunny.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.sunny.user.mapper.UserMapper.USER_MAPPER;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,18 +41,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> findAll(Sort sort){
+    public List<UserEntity> findAll(Sort sort) {
         return userRepo.findAll(sort);
     }
 
     @Override
-    public Page<UserEntity> findAll(Pageable pageable){
+    public Page<UserEntity> findAll(Pageable pageable) {
         return userRepo.findAll(pageable);
     }
 
     @Override
     public void delete(String id) {
-    userRepo.deleteById(id);
+        userRepo.deleteById(id);
     }
 
     @Override
@@ -70,6 +73,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public long count() {
         return userRepo.count();
+    }
+
+    @Override
+    public UserDTO findUserInfo(String loginName) {
+        return USER_MAPPER.toUserDTO(userRepo.findByLoginName(loginName));
     }
 
 }

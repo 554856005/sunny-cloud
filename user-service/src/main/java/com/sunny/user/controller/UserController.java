@@ -1,5 +1,6 @@
 package com.sunny.user.controller;
 
+import com.sunny.common.dto.user.UserDTO;
 import com.sunny.common.utils.Result;
 import com.sunny.user.entity.UserEntity;
 import com.sunny.user.service.UserService;
@@ -9,42 +10,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
-
+@RequestMapping("user/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/user")
+    @GetMapping("/findUserInfo")
+    public UserDTO findUserInfo(@RequestParam String loginName) {
+        return userService.findUserInfo(loginName);
+    }
+
+    @PostMapping("/save")
     public Result<UserEntity> save(@RequestBody UserEntity userentity) {
         return Result.ofSuccess(userService.save(userentity));
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/getById/{id}")
     public Result<UserEntity> getById(@PathVariable(value = "id") String id) {
         return Result.ofSuccess(userService.find(id));
     }
 
-    @GetMapping("/user")
+    @GetMapping("/getAll")
     public Result<List<UserEntity>> getAll() {
         return Result.ofSuccess(userService.findAll());
     }
 
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/delete/{id}")
     public Result deleteById(@PathVariable(value = "id") String id) {
         userService.delete(id);
         return Result.ofSuccess();
     }
 
-    @DeleteMapping("/user")
-    public Result deleteAll() {
-        userService.deleteAll();
-        return Result.ofSuccess();
-    }
 
-    @GetMapping("/user/count")
+    @GetMapping("/count")
     public Result<Long> count() {
         return Result.ofSuccess(userService.count());
     }

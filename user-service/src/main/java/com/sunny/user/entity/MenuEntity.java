@@ -1,7 +1,7 @@
 package com.sunny.user.entity;
 
 import com.sunny.common.entity.RootEntity;
-import com.sunny.user.enums.ActiveEnum;
+import com.sunny.common.enums.ActiveEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

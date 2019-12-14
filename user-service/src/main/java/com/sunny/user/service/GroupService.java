@@ -13,13 +13,11 @@ public interface GroupService {
 
     GroupEntity find(String id);
 
-    List<GroupEntity> findAll();
+    Page<GroupEntity> findAll(Pageable page);
 
     List<GroupEntity> findAll(List<String> ids);
 
     List<GroupEntity> findAll(Sort sort);
-
-    Page<GroupEntity> findAll(Pageable pageable);
 
     void delete(String id);
 

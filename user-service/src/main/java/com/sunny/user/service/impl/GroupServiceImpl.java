@@ -4,10 +4,10 @@ import com.sunny.user.entity.GroupEntity;
 import com.sunny.user.repository.GroupRepo;
 import com.sunny.user.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -27,10 +27,6 @@ public class GroupServiceImpl implements GroupService {
         return groupRepo.getById(id);
     }
 
-    @Override
-    public List<GroupEntity> findAll() {
-        return groupRepo.findAll();
-    }
 
     @Override
     public List<GroupEntity> findAll(List<String> ids) {
@@ -38,18 +34,18 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<GroupEntity> findAll(Sort sort){
+    public List<GroupEntity> findAll(Sort sort) {
         return groupRepo.findAll(sort);
     }
 
     @Override
-    public Page<GroupEntity> findAll(Pageable pageable){
+    public Page<GroupEntity> findAll(Pageable pageable) {
         return groupRepo.findAll(pageable);
     }
 
     @Override
     public void delete(String id) {
-    groupRepo.deleteById(id);
+        groupRepo.deleteById(id);
     }
 
     @Override

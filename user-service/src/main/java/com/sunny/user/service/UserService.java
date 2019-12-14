@@ -1,5 +1,6 @@
 package com.sunny.user.service;
 
+import com.sunny.common.dto.user.UserDTO;
 import com.sunny.user.entity.UserEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,4 +32,5 @@ public interface UserService {
 
     long count();
 
+    UserDTO findUserInfo(String loginName);
 }

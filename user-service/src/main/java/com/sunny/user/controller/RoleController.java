@@ -9,40 +9,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("user/role")
 public class RoleController {
 
     @Autowired
     private RoleService roleService;
 
-    @PostMapping("/role")
+    @PostMapping("/save")
     public Result<RoleEntity> save(@RequestBody RoleEntity roleentity) {
         return Result.ofSuccess(roleService.save(roleentity));
     }
 
-    @GetMapping("/role/{id}")
+    @GetMapping("/getById/{id}")
     public Result<RoleEntity> getById(@PathVariable(value = "id") String id) {
         return Result.ofSuccess(roleService.find(id));
     }
 
-    @GetMapping("/role")
+    @GetMapping("/getAll")
     public Result<List<RoleEntity>> getAll() {
         return Result.ofSuccess(roleService.findAll());
     }
 
-    @DeleteMapping("/role/{id}")
+    @DeleteMapping("/delete/{id}")
     public Result deleteById(@PathVariable(value = "id") String id) {
         roleService.delete(id);
         return Result.ofSuccess();
     }
 
-    @DeleteMapping("/role")
-    public Result deleteAll() {
-        roleService.deleteAll();
-        return Result.ofSuccess();
-    }
-
-    @GetMapping("/role/count")
+    @GetMapping("/count")
     public Result<Long> count() {
         return Result.ofSuccess(roleService.count());
     }

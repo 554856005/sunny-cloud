@@ -1,5 +1,6 @@
 package com.sunny.user.service;
 
+import com.sunny.common.dto.user.PermissionDTO;
 import com.sunny.user.entity.PermissionEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,4 +32,5 @@ public interface PermissionService {
 
     long count();
 
+    List<PermissionDTO> findPermissions(String userId);
 }
