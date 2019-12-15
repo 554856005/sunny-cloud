@@ -26,7 +26,7 @@ import java.util.Set;
 @Table(name = "tt_group")
 @EqualsAndHashCode(callSuper = true)
 public class GroupEntity extends BaseEntity {
-    @Column(columnDefinition = "varchar(20) comment '名称'")
+    @Column(columnDefinition = "varchar(20) not null comment '名称'")
     private String name;
     /**
      * 使用desc,是mysql中关键字，会导致表不能创建成功

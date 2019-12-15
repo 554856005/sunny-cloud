@@ -1,5 +1,6 @@
 package com.sunny.user.service.impl;
 
+import com.google.common.collect.Lists;
 import com.sunny.common.dto.user.PermissionDTO;
 import com.sunny.user.entity.PermissionEntity;
 import com.sunny.user.repository.PermissionRepo;
@@ -11,8 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import static com.sunny.user.mapper.PermissionMapper.PERMISSION_MAPPER;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -77,7 +76,8 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public List<PermissionDTO> findPermissions(String userId) {
-        return PERMISSION_MAPPER.toPermissionDTOs(permissionRepo.findByUserId(userId));
+//        return PERMISSION_MAPPER.toPermissionDTOs(permissionRepo.findByUserId(userId));
+        return Lists.newArrayList();
     }
 
 }

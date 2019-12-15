@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * 组织
@@ -25,13 +25,17 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "tt_org")
 @EqualsAndHashCode(callSuper = true)
-public class OrganizationEntity extends BaseEntity {
-    @Column(columnDefinition = "varchar(128) comment '名称'", length = 20)
+public class OrgEntity extends BaseEntity {
+    @Column(columnDefinition = "varchar(128) comment '名称'", nullable = false)
     private String name;
 
-    @Column(columnDefinition = "varchar(1000) comment '描述'", length = 500)
+    @Column(columnDefinition = "varchar(32) comment '父id'")
+    private String parentId;
+
+    @Column(columnDefinition = "varchar(2000) comment '层级路径'", nullable = false)
+    private String path;
+
+    @Column(columnDefinition = "varchar(1000) comment '描述'")
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "organizations")
-    private Set<RoleEntity> roleEntities = new HashSet<>();
 }

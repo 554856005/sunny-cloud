@@ -1,6 +1,6 @@
 package com.sunny.user.entity;
 
-import com.sunny.common.entity.RootEntity;
+import com.sunny.common.entity.BaseEntity;
 import com.sunny.common.enums.ActiveEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * 菜单栏
@@ -26,12 +26,18 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "tm_menu")
 @EqualsAndHashCode(callSuper = true)
-public class MenuEntity extends RootEntity {
-    /**
-     * 菜单名称
-     */
-    @Column(unique = true, nullable = false, length = 20)
+public class MenuEntity extends BaseEntity {
+    @Column(columnDefinition = "varchar(32) comment '菜单名称'", unique = true, nullable = false)
     private String name;
+
+    @Column(columnDefinition = "varchar(32) comment '父id'")
+    private String parentId;
+
+    @Column(columnDefinition = "varchar(2000) comment '层级路径'", nullable = false)
+    private String path;
+
+    @Column(columnDefinition = "varchar(200) comment '请求路径'")
+    private String url;
 
     /**
      * columnDefinition 用了，length没用
@@ -40,6 +46,4 @@ public class MenuEntity extends RootEntity {
     @Column(columnDefinition = "varchar(10) comment '状态'")
     private ActiveEnum status;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "menus")
-    private Set<RoleEntity> roleEntities = new HashSet<>();
 }
